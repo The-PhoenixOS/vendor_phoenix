@@ -173,6 +173,9 @@ PRODUCT_PACKAGES += \
 # Bootanimation
 $(call inherit-product, vendor/flare/config/bootanimation.mk)
 
+# Fonts
+include vendor/flare/config/fonts.mk
+
 include vendor/flare/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
