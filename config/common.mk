@@ -79,6 +79,10 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
 
+# Disable RescueParty due to high risk of data loss
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.disable_rescue=true
+
 # Extra tools in Flare
 PRODUCT_PACKAGES += \
     bash \
