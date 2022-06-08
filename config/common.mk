@@ -167,6 +167,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/flare/overlay/common
 
 PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay
 
