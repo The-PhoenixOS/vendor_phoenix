@@ -185,6 +185,9 @@ PRODUCT_PACKAGES += \
 # Bootanimation
 $(call inherit-product, vendor/flare/config/bootanimation.mk)
 
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
+
 # Fonts
 include vendor/flare/config/fonts.mk
 
