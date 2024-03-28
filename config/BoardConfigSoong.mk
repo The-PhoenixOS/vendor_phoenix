@@ -49,6 +49,7 @@ SOONG_CONFIG_flareGlobalVars += \
     target_powershare_path \
     target_powershare_enabled \
     target_powershare_disabled \
+    target_inputdispatcher_skip_event_key \
     target_surfaceflinger_udfps_lib \
     target_trust_usb_control_path \
     target_trust_usb_control_enable \
@@ -92,6 +93,7 @@ SOONG_CONFIG_flareGlobalVars_sdmcore_has_is_display_hw_available_func := $(TARGE
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
+TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY ?= 0
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
 TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED ?= false
 TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
@@ -124,6 +126,7 @@ SOONG_CONFIG_flareGlobalVars_target_health_charging_control_supports_bypass := $
 SOONG_CONFIG_flareGlobalVars_target_health_charging_control_supports_deadline := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE)
 SOONG_CONFIG_flareGlobalVars_target_health_charging_control_supports_toggle := $(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE)
 SOONG_CONFIG_flareGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
+SOONG_CONFIG_flareGlobalVars_target_inputdispatcher_skip_event_key := $(TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY)
 SOONG_CONFIG_flareGlobalVars_target_power_libperfmgr_mode_extension_lib := $(TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB)
 SOONG_CONFIG_flareGlobalVars_target_powershare_path := $(TARGET_POWERSHARE_PATH)
 SOONG_CONFIG_flareGlobalVars_target_powershare_enabled := $(TARGET_POWERSHARE_ENABLED)
