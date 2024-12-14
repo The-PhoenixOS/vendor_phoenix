@@ -172,22 +172,18 @@ else
         $(error "NO KERNEL CONFIG")
     else
         ifneq ($(TARGET_FORCE_PREBUILT_KERNEL),)
-            ifneq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-                $(error "PREBUILT KERNEL IS NOT ALLOWED ON OFFICIAL BUILDS!")
-            else
-                $(warning **********************************************************)
-                $(warning * Kernel source found and configuration was defined,     *)
-                $(warning * but prebuilt kernel is being forced.                   *)
-                $(warning * While this is likely intentional,                      *)
-                $(warning * it is NOT SUPPORTED WHATSOEVER.                        *)
-                $(warning * Generated kernel headers may not align with            *)
-                $(warning * the ABI of kernel you're including.                    *)
-                $(warning * Please unset TARGET_FORCE_PREBUILT_KERNEL              *)
-                $(warning * to build the kernel from source.                       *)
-                $(warning **********************************************************)
-                FULL_KERNEL_BUILD := false
-                KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
-            endif
+	    $(warning **********************************************************)
+            $(warning * Kernel source found and configuration was defined,     *)
+            $(warning * but prebuilt kernel is being forced.                   *)
+            $(warning * While this is likely intentional,                      *)
+            $(warning * it is NOT SUPPORTED WHATSOEVER.                        *)
+            $(warning * Generated kernel headers may not align with            *)
+            $(warning * the ABI of kernel you're including.                    *)
+            $(warning * Please unset TARGET_FORCE_PREBUILT_KERNEL              *)
+            $(warning * to build the kernel from source.                       *)
+            $(warning **********************************************************)
+            FULL_KERNEL_BUILD := false
+            KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
         else
             FULL_KERNEL_BUILD := true
             KERNEL_BIN := $(TARGET_PREBUILT_INT_KERNEL)
@@ -249,7 +245,11 @@ ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
     endif
     PATH_OVERRIDE += PATH=$(TARGET_KERNEL_CLANG_PATH)/bin:$$PATH
     ifeq ($(KERNEL_CC),)
-        KERNEL_CC := CC="$(CCACHE_BIN) clang"
+        CLANG_EXTRA_FLAGS := --cuda-path=/dev/null
+        ifeq ($(shell $(TARGET_KERNEL_CLANG_PATH)/bin/clang -v --hip-path=/dev/null >/dev/null 2>&1; echo $$?),0)
+            CLANG_EXTRA_FLAGS += --hip-path=/dev/null
+        endif
+        KERNEL_CC := CC="$(CCACHE_BIN) clang $(CLANG_EXTRA_FLAGS)"
     endif
 endif
 
@@ -638,7 +638,7 @@ ifeq ($(BOARD_USES_QCOM_MERGE_DTBS_SCRIPT),true)
 	$(hide) find $(DTBS_BASE) -type f -name "*.dtb*" | xargs rm -f
 	$(hide) find $(DTBS_OUT) -type f -name "*.dtb*" | xargs rm -f
 	mv $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts/vendor/*/*.dtb $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts/vendor/*/*.dtbo $(DTBS_BASE)/
-	PATH=$(abspath $(HOST_OUT_EXECUTABLES)):$${PATH} python3 $(BUILD_TOP)/vendor/lineage/build/tools/merge_dtbs.py $(DTBS_BASE) $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts/vendor/qcom $(DTBS_OUT)
+	PATH=$(abspath $(HOST_OUT_EXECUTABLES)):$${PATH} python3 $(BUILD_TOP)/vendor/flare/build/tools/merge_dtbs.py $(DTBS_BASE) $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts/vendor/qcom $(DTBS_OUT)
 	cat $(shell find $(DTB_OUT)/out -type f -name "${TARGET_MERGE_DTBS_WILDCARD}.dtb" | sort) > $@
 else
 	cat $(shell find $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | sort) > $@
