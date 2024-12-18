@@ -191,6 +191,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/procmem
 endif
 
+# ThemeOverlays
+include packages/overlays/Themes/themes.mk
+
 # Root
 PRODUCT_PACKAGES += \
     adb_root
