@@ -171,10 +171,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/%/libfuse-lite.so \
     system/%/libntfs-3g.so
 
-# Gamespace
-PRODUCT_PACKAGES += \
-    GameSpace
-
 # Gapps
 ifeq ($(WITH_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
@@ -218,6 +214,15 @@ SKIP_BOOT_JARS_CHECK := true
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
+
+# GameSpace
+PRODUCT_PACKAGES += \
+    GameSpace
+
+# LMOFreeform
+PRODUCT_PACKAGES += \
+   LMOFreeform \
+   LMOFreeformSidebar
 
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
