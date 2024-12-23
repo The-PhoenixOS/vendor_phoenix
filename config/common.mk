@@ -54,7 +54,8 @@ PRODUCT_COPY_FILES += \
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/flare/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+    vendor/flare/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml \
+    vendor/flare/config/permissions/privapp-permissions-settings.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-settings.xml
 
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
