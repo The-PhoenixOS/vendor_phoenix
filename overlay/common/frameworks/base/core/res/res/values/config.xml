@@ -554,4 +554,7 @@
         <item>systemui/use_back_gesture_ml_model=true</item>
         <item>systemui/volume_separate_notification=true</item>
     </string-array>
+
+    <!-- Circle to search -->
+    <string name="config_defaultContextualSearchPackageName" translatable="false">com.google.android.googlequicksearchbox</string>
 </resources>
