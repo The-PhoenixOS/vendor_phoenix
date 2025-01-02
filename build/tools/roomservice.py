@@ -233,6 +233,8 @@ def fetch_dependencies(repo_path):
                 if 'branch' not in dependency:
                     if dependency.get('remote', 'github') == 'github':
                         dependency['branch'] = get_default_or_fallback_revision(dependency['repository'])
+                        if not dependency['branch']:
+                            sys.exit(1)
                     else:
                         dependency['branch'] = None
             verify_repos.append(dependency['target_path'])
