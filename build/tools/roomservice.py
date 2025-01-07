@@ -16,10 +16,8 @@
 
 from __future__ import print_function
 
-import base64
 import glob
 import json
-import netrc
 import os
 import re
 import subprocess
@@ -50,17 +48,6 @@ if not depsonly:
     print("Device %s not found. Attempting to retrieve device repository from Project-Flare Github (http://github.com/Project-Flare)." % device)
 
 repositories = []
-
-try:
-    authtuple = netrc.netrc().authenticators("api.github.com")
-
-    if authtuple:
-        auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
-        githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
-    else:
-        githubauth = None
-except:
-    githubauth = None
 
 if not depsonly:
     githubreq = urllib.request.Request("https://raw.githubusercontent.com/Project-Flare/mirror/main/default.xml")
