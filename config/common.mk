@@ -255,7 +255,8 @@ PRODUCT_PACKAGES += \
     CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NavigationBarNoHintOverlay \
-    NetworkStackOverlay
+    NetworkStackOverlay \
+    ThemedIconsOverlay
 
 # Bootanimation
 $(call inherit-product, vendor/flare/config/bootanimation.mk)
