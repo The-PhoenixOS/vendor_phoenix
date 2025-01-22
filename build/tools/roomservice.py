@@ -188,6 +188,8 @@ def add_to_manifest(repositories):
                 project.attrib["remote"] = repo_remote
                 project.attrib["clone-depth"] = "1"
                 del project.attrib["revision"]
+        if project.attrib["revision"] == get_default_revision():
+            del project.attrib["revision"]
         print("Adding dependency: %s -> %s" % (project.attrib["name"], project.attrib["path"]))
         lm.append(project)
 
