@@ -263,7 +263,8 @@ PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
     NavigationBarNoHintOverlay \
     NetworkStackOverlay \
-    ThemedIconsOverlay
+    ThemedIconsOverlay \
+    FlareWallpaperStub
 
 # Bootanimation
 $(call inherit-product, vendor/flare/config/bootanimation.mk)
