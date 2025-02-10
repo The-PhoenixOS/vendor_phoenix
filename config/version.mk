@@ -51,7 +51,6 @@ FLARE_FINGERPRINT := ProjectFlare/$(FLARE_MOD_VERSION)/$(TARGET_PRODUCT_SHORT)/$
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.flare.version=$(FLARE_DISPLAY_VERSION) \
   ro.flare.build.status=$(FLARE_BUILD_TYPE) \
-  ro.modversion=$(FLARE_MOD_VERSION) \
   ro.flare.build.date=$(FLARE_BUILD_DATE) \
   ro.flare.buildtype=$(FLARE_BUILD_TYPE) \
   ro.flare.fingerprint=$(FLARE_FINGERPRINT) \
